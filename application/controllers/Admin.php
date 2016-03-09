@@ -12,13 +12,21 @@ class Admin extends CI_Controller
     
     function __construct() {
         parent::__construct();
-    }
-    // 如果找不到管理员的session，则自动跳转到登陆页面
-    public function index() {
-        
+        session_start();
+        // 如果找不到管理员的session，则自动跳转到登陆页面
+        if(!empty($_SESSION['admin'])){
+            $this->index();
+        }else{
+            $this->login();
+        }
     }
     // 登陆页面
     public function login(){
+        $this->load->helper('url');
+        $this->load->view('login');
+    }
+    public function index() {
         
     }
+    
 }
