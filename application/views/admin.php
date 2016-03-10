@@ -1,3 +1,7 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+require_once('public.php');
+?>
 <!doctype html>
 <html class="no-js">
 <head>
