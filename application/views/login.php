@@ -5,9 +5,7 @@ require_once('public.php');
 <!DOCTYPE html>
 <html>
 <head lang="en">
-  <meta charset="UTF-8">
   <title>Login Page | Amaze UI Example</title>
-  
   <style>
     .header {
       text-align: center;

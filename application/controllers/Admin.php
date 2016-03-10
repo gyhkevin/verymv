@@ -25,8 +25,9 @@ class Admin extends CI_Controller
         $this->load->helper('url');
         $this->load->view('login');
     }
+    // 管理员首页
     public function index() {
-        
+        $this->load->view($this->view_path);
     }
     
 }
