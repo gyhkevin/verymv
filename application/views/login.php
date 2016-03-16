@@ -19,6 +19,11 @@ require_once('public.php');
       font-size: 14px;
     }
   </style>
+  <<script type="text/javascript">
+    $(function(){
+      $('#login').post();
+    })
+  </script>
 </head>
 <body>
 
@@ -32,18 +37,10 @@ require_once('public.php');
 <div class="am-g">
   <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
     <h3>登录</h3>
-    <hr>
-    <div class="am-btn-group">
-      <a href="#" class="am-btn am-btn-secondary am-btn-sm"><i class="am-icon-github am-icon-sm"></i> Github</a>
-      <a href="#" class="am-btn am-btn-success am-btn-sm"><i class="am-icon-google-plus-square am-icon-sm"></i> Google+</a>
-      <a href="#" class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-stack-overflow am-icon-sm"></i> stackOverflow</a>
-    </div>
-    <br>
-    <br>
-
-    <form method="post" class="am-form">
-      <label for="email">邮箱:</label>
-      <input type="email" name="" id="email" value="">
+    
+    <form id="login" method="post" class="am-form">
+      <label for="user_name">用户名:</label>
+      <input type="user_name" name="" id="user_name" value="">
       <br>
       <label for="password">密码:</label>
       <input type="password" name="" id="password" value="">

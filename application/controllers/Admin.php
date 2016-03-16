@@ -31,6 +31,7 @@ class Admin extends CI_Controller
         $password = $_POST['password'];
         // 存储session值
         $_SESSION['admin'] = $user;
-        
+        $data['page_path'] = $this->page_path;
+        $this->load->view('login',$data);
     }
 }

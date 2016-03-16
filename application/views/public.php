@@ -6,3 +6,4 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="alternate icon" type="image/png" href="<?=base_url('assets/i/favicon.png');?>">
 <link rel="stylesheet" href="<?=base_url('assets/css/amazeui.min.css');?>"/>
+<link rel="stylesheet" href="<?=base_url('assets/js/jquery.min.js');?>"/>
