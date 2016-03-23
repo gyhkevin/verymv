@@ -19,9 +19,20 @@ require_once('public.php');
       font-size: 14px;
     }
   </style>
-  <<script type="text/javascript">
+  <script type="text/javascript">
     $(function(){
-      $('#login').post();
+      
+      $('#login').submit(function(){
+        $.post('<?=site_url("{page_path}/auth")?>', $('#login').serialize(), function(c){
+          c = eval('('+c+')');
+          if (c.status) {
+
+          }else{
+
+          }
+        });
+      });
+      
     })
   </script>
 </head>
