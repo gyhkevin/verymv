@@ -8,7 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller
 {
     private $view_path = 'admin';
-    private $page_path = 'Admin';
+    private $model_path = 'admin_model';
+    public $page_path = 'Admin';
     
     function __construct() {
         parent::__construct();
@@ -18,10 +19,12 @@ class Admin extends CI_Controller
         $this->load->helper('url');
         // $_SESSION['admin'] = 'kevin';
         // 如果找不到管理员的session，则自动跳转到登陆页面
+        $data['page_path'] = $this->page_path;
+        $data['theme_path'] = $this->config->item('theme_path');
         if(!empty($_SESSION['admin'])){
             $this->load->view($this->view_path);
         }else{
-            $this->load->view('login');
+            $this->load->view('login', $data);
         }
     }
     // 登陆页面
@@ -33,5 +36,12 @@ class Admin extends CI_Controller
         $_SESSION['admin'] = $user;
         $data['page_path'] = $this->page_path;
         $this->load->view('login',$data);
+    }
+
+    public function auth(){
+        $this->load->model($this->model_path);
+        $data = $this->admin_model->select();
+        // 返回json数据
+        exit('{"state":1}');
     }
 }
