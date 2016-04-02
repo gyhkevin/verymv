@@ -1,10 +1,7 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-require_once('public.php');
-?>
 <!doctype html>
 <html class="no-js">
 <head>
+  <?php require_once('public.php');?>
   <title>Amaze UI Admin index Examples</title>
   <link rel="stylesheet" href="<?=base_url('assets/css/admin.css');?>"/>
 </head>

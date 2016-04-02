@@ -63,8 +63,6 @@
 <script type="text/javascript">
 $(function() {
     $('#login').submit(function() {
-        // alert('111');
-        //console.log($('#login').serialize());
         var url = "<?=site_url("{$page_path}/auth"); ?>";
         // $.post(url, $('#login').serialize(), function(c) {
         //     // c = eval('(' + c + ')');
@@ -76,10 +74,12 @@ $(function() {
                 url: url,
                 data: $('#login').serialize(),
                 success: function (json) {
+                  json = eval('('+json+')');
                  if(json.state == 1) {
-                  alert();
+                  alert('登录成功');
+                  window.location.reload();
                  }else{
-                  alert();
+                  alert('登录失败！用户名或密码错误！');
                  }
                 }
             });
