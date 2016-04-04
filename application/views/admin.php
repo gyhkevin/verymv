@@ -3,7 +3,8 @@
 <head>
   <?php require_once('public.php');?>
   <title>Amaze UI Admin index Examples</title>
-  <link rel="stylesheet" href="<?=base_url('assets/css/admin.css');?>"/>
+  <?php $theme_path=$this->config->item ( 'theme_path' );?>
+  <link rel="stylesheet" href="<?=base_url("{$theme_path}assets/css/admin.css");?>"/>
 </head>
 <body>
 <!--[if lte IE 9]>
