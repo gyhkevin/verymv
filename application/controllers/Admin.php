@@ -38,16 +38,21 @@ class Admin extends CI_Controller {
 		// 查询数据
 		$this->load->model ( $this->model_path );
 		$data = $this->admin_model->select ();
-		foreach ( $data as $value ) {
-			if ($value->user_name === $user && $value->password === $password) {
-				// 存储session值
-				$_SESSION ['admin'] = $user;
-				// 返回json数据
-				exit ( '{"state":1}' );
-			} else {
-				// 返回json数据
-				exit ( '{"state":0}' );
+		if (! empty ( $data )) {
+			foreach ( $data as $value ) {
+				if ($value->user_name === $user && $value->password === $password) {
+					// 存储session值
+					$_SESSION ['admin'] = $user;
+					// 返回json数据
+					exit ( '{"state":1,"info":"登录成功！"}' );
+				} else {
+					// 返回json数据
+					exit ( '{"state":0,"info":"用户不存在！"}' );
+				}
 			}
+		} else {
+			exit ( '{"state":2,"info":"登录失败！用户名或密码错误！"}' );
 		}
+		
 	}
 }

@@ -7,23 +7,23 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="renderer" content="webkit">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="alternate icon" type="image/png" href="<?=base_url('assets/i/favicon.png');?>">
+<link rel="alternate icon" type="image/png" href="<?=base_url("{$theme_path}assets/i/favicon.png");?>">
 <link rel="stylesheet" href="<?=base_url("{$theme_path}assets/css/amazeui.min.css");?>"/>
 <script type="text/javascript" src="<?=base_url("{$theme_path}assets/js/jquery.min.js");?>"></script>
-  <title>Login Page | Amaze UI Example</title>
-  <style>
-    .header {
-      text-align: center;
-    }
-    .header h1 {
-      font-size: 200%;
-      color: #333;
-      margin-top: 30px;
-    }
-    .header p {
-      font-size: 14px;
-    }
-  </style>
+<title>Login Page | Amaze UI Example</title>
+<style>
+  .header {
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 200%;
+    color: #333;
+    margin-top: 30px;
+  }
+  .header p {
+    font-size: 14px;
+  }
+</style>
   
 </head>
 <body>
@@ -63,26 +63,23 @@
 <script type="text/javascript">
 $(function() {
     $('#login').submit(function() {
-        var url = "<?=site_url("{$page_path}/auth"); ?>";
-        // $.post(url, $('#login').serialize(), function(c) {
-        //     // c = eval('(' + c + ')');
-        //     // if (c.status == 0) {} else {}
-        //     return false;
-        // });
+        var url = "<?=site_url("{$page_path}/auth");?>";
         $.ajax({
-                type: 'POST',
-                url: url,
-                data: $('#login').serialize(),
-                success: function (json) {
-                  json = eval('('+json+')');
-                 if(json.state == 1) {
-                  alert('登录成功');
-                  window.location.reload();
-                 }else{
-                  alert('登录失败！用户名或密码错误！');
-                 }
+            type: 'POST',
+            url: url,
+            data: $('#login').serialize(),
+            success: function(json) {
+                json = eval('(' + json + ')');
+                if (json.state == 1) {
+                    alert(json.info);
+                    window.location.reload();
+                } else if (json.state == 2) {
+                    alert(json.info);
+                } else {
+                    alert(json.info);
                 }
-            });
+            }
+        });
         return false;
     });
 });
