@@ -17,9 +17,17 @@ class Admin extends CI_Controller {
 		// $_SESSION['admin'] = 'kevin';
 		// 如果找不到管理员的session，则自动跳转到登陆页面
 		// $data ['theme_path'] = $this->config->item ( 'theme_path' );
-		$data ['admin_path'] = C_ADMIN;
-		$data ['department_path'] = C_DEPARTMENT;
+		$data ['admin_path'] = 'Admin';
+		$data ['department_path'] = 'Department';
+		$data ['recruit_path'] = 'Recruit';
+		$data ['employee_path'] = 'Employee';
+		$data ['attendance_path'] = 'Attendance';
 		if (! empty ( $_SESSION ['admin'] )) {
+			$_SESSION ['sidebar']['admin_path'] = 'Admin';
+			$_SESSION ['sidebar']['department_path'] = 'Department';
+			$_SESSION ['sidebar']['recruit_path'] = 'Recruit';
+			$_SESSION ['sidebar']['employee_path'] = 'Employee';
+			$_SESSION ['sidebar']['attendance_path'] = 'Attendance';
 			$this->load->view ( $this->view_path, $data );
 		} else {
 			$this->load->view ( 'login', $data );
@@ -27,7 +35,7 @@ class Admin extends CI_Controller {
 	}
 	// 登陆页面
 	public function login() {
-		$data ['page_path'] = C_ADMIN;
+		$data ['page_path'] = 'Admin';
 		$this->load->view ( 'login', $data );
 	}
 	public function auth() {

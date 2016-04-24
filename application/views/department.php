@@ -29,10 +29,10 @@
       <div class="am-u-sm-12 am-u-md-6">
         <div class="am-btn-toolbar">
           <div class="am-btn-group am-btn-group-xs">
-            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-            <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
+            <a class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-plus"></i> 新增</a>
+            <!-- <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
             <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
-            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button> -->
           </div>
         </div>
       </div>
@@ -61,51 +61,81 @@
 
     <div class="am-g">
       <div class="am-u-sm-12">
-        <form class="am-form">
-          <table class="am-table am-table-striped am-table-hover table-main">
-            <thead>
-              <tr>
-                <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th><th class="table-title">标题</th><th class="table-type">类别</th><th class="table-author am-hide-sm-only">作者</th><th class="table-date am-hide-sm-only">修改日期</th><th class="table-set">操作</th>
-              </tr>
+        <table class="am-table am-table-bd am-table-striped admin-content-table">
+          <thead>
+          <tr>
+            <th>ID</th><th>用户名</th><th>最后成交任务</th><th>成交订单</th><th>管理</th>
+          </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td>1</td>
-              <td><a href="#">Business management</a></td>
-              <td>default</td>
-              <td class="am-hide-sm-only">测试1号</td>
-              <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
-              <td>
-                <div class="am-btn-toolbar">
-                  <div class="am-btn-group am-btn-group-xs">
-                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
-                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
-                  </div>
-                </div>
-              </td>
-            </tr>
+          <tr><td>1</td><td>John Clark</td><td><a href="#">Business management</a></td> <td><span class="am-badge am-badge-success">+20</span></td>
+            <td>
+              <div class="am-dropdown" data-am-dropdown>
+                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                  <li><a href="#">1. 编辑</a></li>
+                  <li><a href="#">2. 下载</a></li>
+                  <li><a href="#">3. 删除</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr><td>2</td><td>风清扬</td><td><a href="#">公司LOGO设计</a> </td><td><span class="am-badge am-badge-danger">+2</span></td>
+            <td>
+              <div class="am-dropdown" data-am-dropdown>
+                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                  <li><a href="#">1. 编辑</a></li>
+                  <li><a href="#">2. 下载</a></li>
+                  <li><a href="#">3. 删除</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr><td>3</td><td>詹姆斯</td><td><a href="#">开发一款业务数据软件</a></td><td><span class="am-badge am-badge-warning">+10</span></td>
+            <td>
+              <div class="am-dropdown" data-am-dropdown>
+                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                  <li><a href="#">1. 编辑</a></li>
+                  <li><a href="#">2. 下载</a></li>
+                  <li><a href="#">3. 删除</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr><td>4</td><td>云适配</td><td><a href="#">适配所有网站</a></td><td><span class="am-badge am-badge-secondary">+50</span></td>
+            <td>
+              <div class="am-dropdown" data-am-dropdown>
+                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                  <li><a href="#">1. 编辑</a></li>
+                  <li><a href="#">2. 下载</a></li>
+                  <li><a href="#">3. 删除</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>5</td><td>呵呵呵</td>
+            <td><a href="#">基兰会获得BUFF</a></td>
+            <td><span class="am-badge">+22</span></td>
+            <td>
+              <div class="am-dropdown" data-am-dropdown>
+                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                  <li><a href="#">1. 编辑</a></li>
+                  <li><a href="#">2. 下载</a></li>
+                  <li><a href="#">3. 删除</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
           </tbody>
         </table>
-          <div class="am-cf">
-  共 15 条记录
-  <div class="am-fr">
-    <ul class="am-pagination">
-      <li class="am-disabled"><a href="#">«</a></li>
-      <li class="am-active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">»</a></li>
-    </ul>
-  </div>
-</div>
-          <hr />
-          <p>注：.....</p>
-        </form>
       </div>
+    </div>
 
     </div>
   </div>

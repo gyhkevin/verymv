@@ -9,13 +9,12 @@ class Department extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		session_start();
 	}
 
 	public function index()
 	{
 		$this->load->helper('url');
-		$data ['admin_path'] = C_ADMIN;
-		$data ['department_path'] = C_DEPARTMENT;
-		$this->load->view($this->view_path, $data);
+		$this->load->view($this->view_path);
 	}
 }
