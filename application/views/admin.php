@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
   <?php require_once('pages/public.php');?>
-  <title>Amaze UI Admin index Examples</title>
+  <title>人力资源管理系统</title>
   <link rel="stylesheet" href="<?=$theme_path;?>assets/css/admin.css"/>
 </head>
 <body>

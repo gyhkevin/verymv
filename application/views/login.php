@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
 <?php require_once('pages/public.php');?>
-<title>Login Page | Amaze UI Example</title>
+<title>登录--人力资源管理系统</title>
 <style>
   .header {
     text-align: center;
@@ -22,8 +22,7 @@
 
 <div class="header">
   <div class="am-g">
-    <h1>Web ide</h1>
-    <p>Integrated Development Environment<br/>代码编辑，代码生成，界面设计，调试，编译</p>
+    <h1>欢迎来到人力资源管理系统</h1>
   </div>
   <hr />
 </div>

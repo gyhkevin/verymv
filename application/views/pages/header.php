@@ -1,6 +1,6 @@
 <header class="am-topbar admin-header">
   <div class="am-topbar-brand">
-    <strong>Amaze UI</strong> <small>后台管理</small>
+    <strong>人力资源管理系统</strong> <small>后台管理</small>
   </div>
 
   <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
