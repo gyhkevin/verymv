@@ -21,23 +21,32 @@ class Admin extends CI_Controller {
 		$data ['department_path'] = 'Department';
 		$data ['recruit_path'] = 'Recruit';
 		$data ['employee_path'] = 'Employee';
-		$data ['attendance_path'] = 'Attendance';
+        $data ['attendance_path'] = 'Attendance';
+		$data ['training_path'] = 'Training';
 		if (! empty ( $_SESSION ['admin'] )) {
+            // 把菜单中的值存放到session，以便直接拿数据，无需重复定义。
 			$_SESSION ['sidebar']['admin_path'] = 'Admin';
 			$_SESSION ['sidebar']['department_path'] = 'Department';
-			$_SESSION ['sidebar']['recruit_path'] = 'Recruit';
-			$_SESSION ['sidebar']['employee_path'] = 'Employee';
+            $_SESSION ['sidebar']['recruit_path'] = 'Recruit';
 			$_SESSION ['sidebar']['attendance_path'] = 'Attendance';
+			$_SESSION ['sidebar']['employee_path'] = 'Employee';
+			$_SESSION ['sidebar']['training_path'] = 'Training';
 			$this->load->view ( $this->view_path, $data );
 		} else {
 			$this->load->view ( 'login', $data );
 		}
 	}
-	// 登陆页面
+	// 跳转到登陆页面
 	public function login() {
 		$data ['page_path'] = 'Admin';
 		$this->load->view ( 'login', $data );
 	}
+    // 退出登陆
+    public function logout()
+    {
+        unset($_SESSION['admin']);
+        header('location:'.$_SERVER['HTTP_REFERER']);
+    }
 	public function auth() {
 		// 获取登陆信息
 		$user = $_POST ['user_name'];
