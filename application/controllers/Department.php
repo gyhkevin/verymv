@@ -17,5 +17,4 @@ class Department extends CI_Controller
 		$this->load->helper('url');
 		$this->load->view($this->view_path);
 	}
-	
 }
