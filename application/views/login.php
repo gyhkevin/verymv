@@ -37,13 +37,14 @@
       <input type="password" name="password" id="password" value="">
       <br>
       <label for="remember-me">
-        <input id="remember-me" type="checkbox">
-        记住密码
+        <input id="remember-me" type="checkbox">记住密码
       </label>
       <br />
       <div class="am-cf">
-        <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-        <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+        <input type="submit" name="" value="登 录" 
+        class="am-btn am-btn-primary am-btn-sm am-fl">
+        <input type="submit" name="" value="忘记密码 ^_^? " 
+        class="am-btn am-btn-default am-btn-sm am-fr">
       </div>
     </form>
     <hr>
@@ -53,17 +54,19 @@
 </body>
 <script type="text/javascript">
 $(function() {
+	// 触发提交，调用jQuery中的Ajax方法
     $('#login').submit(function() {
+    	// 提交到后台处理方法
         var url = "<?=site_url($admin_path);?>/auth";
         $.ajax({
-            type: 'POST',
+            type: 'POST',	//post方式传递
             url: url,
-            data: $('#login').serialize(),
+            data: $('#login').serialize(),	// 序列化表单数据
             success: function(json) {
                 json = eval('(' + json + ')');
                 if (json.state == 1) {
-                    alert(json.info);
-                    window.location.reload();
+                    alert(json.info);	// 提示登陆成功信息
+                    window.location.reload();	// 刷新页面
                 } else if (json.state == 2) {
                     alert(json.info);
                 } else {
