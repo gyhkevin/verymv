@@ -92,7 +92,9 @@
 				<label for="user-email" class="am-u-sm-3 am-form-label">部门 / Department</label>
 				<div class="am-u-sm-9">
 					<select name="department_id" id="">
-						<option value="1">市场部</option>
+						<?php  foreach ($options as $row) { ?>
+							<option value="<?php echo $row['id'] ?>"><?php echo str_pad("",$row['deep']*3, "-",STR_PAD_RIGHT); ?><?php echo $row['name']; ?></option>
+						<?php } ?>
 					</select>
 					<small>部门你懂得...</small>
 				</div>

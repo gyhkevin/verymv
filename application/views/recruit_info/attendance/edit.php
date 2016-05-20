@@ -116,8 +116,8 @@
 				<label for="user-weibo" class="am-u-sm-3 am-form-label">状态 / Status</label>
 				<div class="am-u-sm-9">
 					<select name="status" id="">
-						<option value="1">未支付</option>
-						<option value="2">已支付</option>
+						<option value="1" <?php if($info->status == 1) echo 'selected'; ?>>未支付</option>
+						<option value="2" <?php if($info->status == 2) echo 'selected'; ?>>已支付</option>
 					</select>
 				</div>
 			</div>

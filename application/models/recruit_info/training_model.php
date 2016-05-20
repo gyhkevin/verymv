@@ -15,7 +15,7 @@ class Training_Model extends CI_Model
 	}
 	
 	// 查询方法
-	public function get($id = 0)
+	public function get($id = 0, $limit = NULL, $offset = NULL)
 	{
 		$this->db->select('*');
 		$this->db->from($this->table_name);
@@ -25,7 +25,17 @@ class Training_Model extends CI_Model
 			$this->db->where('id', $id);
 		}
 
+		if ($limit != NULL || $offset != NULL)
+		{
+			$this->db->limit($limit, $offset);
+		}
+
 		return $this->db->get();
+	}
+
+	public function total()
+	{
+		return $this->db->count_all($this->table_name);
 	}
 
 	public function add($arr)

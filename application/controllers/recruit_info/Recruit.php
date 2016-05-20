@@ -16,13 +16,30 @@ class Recruit extends CI_Controller
 		parent::__construct();
 	}
 
-	public function index()
+	public function index($per_page = '')
 	{
 		$this->load->model($this->model_path);
+		$this->load->library('pagination');
 		$this->load->helper('url');
 
+		$total = $this->recruit_model->total();
+
+		$config['base_url'] = site_url("recruit_info/recruit/index");
+		$config['total_rows'] = $total;
+		$config['per_page'] = 10;
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="am-active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['next_link'] = FALSE;
+		$config['uri_segment'] = 4;
+		$config['prev_link'] = FALSE;
+
+		$this->pagination->initialize($config);
+
 		$data['page_path'] = $this->page_path;
-		$data['gotdata'] = $this->recruit_model->get()->result();
+		$data['total'] = $total;
+		$data['gotdata'] = $this->recruit_model->get_with_dept(10, $per_page)->result();
 
 		$this->load->view("{$this->view_path}/list", $data);
 	}
@@ -38,9 +55,10 @@ class Recruit extends CI_Controller
 		{
 			$gotdata[$value->id] = array('id' => $value->id, 'pid' => $value->pid, 'name' => $value->name);
 		}
+		$options = $this->getChildren($this->_tree($gotdata));
 
 		$data['page_path'] = $this->page_path;
-		$data['gotdata'] = $this->_tree($gotdata);
+		$data['options'] = $options;
 
 		$this->load->view("{$this->view_path}/add", $data);
 	}
@@ -56,9 +74,10 @@ class Recruit extends CI_Controller
 		{
 			$gotdata[$value->id] = array('id' => $value->id, 'pid' => $value->pid, 'name' => $value->name);
 		}
+		$options = $this->getChildren($this->_tree($gotdata));
 
 		$data['page_path'] = $this->page_path;
-		$data['gotdata'] = $this->_tree($gotdata);
+		$data['options'] = $options;
 		$data['info'] = $this->recruit_model->get($id)->row();
 
 		$this->load->view("{$this->view_path}/edit", $data);
@@ -141,5 +160,17 @@ class Recruit extends CI_Controller
 			}
 		}
 		return $tree;
+	}
+
+	private function getChildren($option, $deep = 0)
+	{
+		$data = array();
+		foreach($option as $row) {
+	        $data[] = array("id"=>$row['id'], "name"=>$row['name'],"pid"=>$row['pid'],'deep'=>$deep);
+	        if (isset($row['son'])) {
+	            $data = array_merge($data, $this->getChildren($row['son'], $deep+1));
+	        }
+	    }
+	    return $data;
 	}
 }

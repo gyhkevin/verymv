@@ -68,15 +68,17 @@
 				</ul>
 			</li>
 			<li>
-				<a class="am-cf" data-am-collapse="{target: '#collapse-next'}"><span class="am-icon-file"></span> 招聘相关<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-				<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-next">
+				<a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-next'}">
+					<span class="am-icon-file"></span> 招聘相关<span class="am-icon-angle-right am-fr am-margin-right"></span>
+				</a>
+				<ul class="am-list am-collapse admin-sidebar-sub" id="collapse-next">
 					<!-- <li><a href="<?=site_url($_SESSION['sidebar']['recruit_path']);?>" class="am-cf"><span class="am-icon-check"></span> 招聘管理<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li> -->
 					<li><a href="<?=site_url($_SESSION['sidebar']['recruit_path']);?>" target='pandora_body'><span class="am-icon-puzzle-piece"></span> 招聘信息</a></li>
 					<li><a href='<?=site_url($_SESSION['sidebar']['attendance_path']);?>' target='pandora_body'><span class="am-icon-table"></span> 工资信息</a></li>
 					<li><a href='<?=site_url($_SESSION['sidebar']['training_path']);?>' target='pandora_body'><span class="am-icon-table"></span> 培训管理</a></li>
 				</ul>
 			</li>
-			<li><a href="<?=site_url($_SESSION['sidebar']['training_path']);?>"><span class="am-icon-pencil-square-o"></span> 培训管理</a></li>
+			<!-- <li><a href="<?=site_url($_SESSION['sidebar']['training_path']);?>"><span class="am-icon-pencil-square-o"></span> 培训管理</a></li> -->
 			<li><a href="<?=site_url($_SESSION['sidebar']['admin_path']).'/logout';?>"><span class="am-icon-sign-out"></span> 注销</a></li>
 			</ul>
 			<div class="am-panel am-panel-default admin-sidebar-panel">

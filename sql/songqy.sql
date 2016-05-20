@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-05-15 23:57:05
+Date: 2016-05-18 23:33:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,12 +48,13 @@ CREATE TABLE `department` (
   `path` varchar(255) NOT NULL,
   `string` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of department
 -- ----------------------------
-INSERT INTO `department` VALUES ('1', '市场部', '0', '', '');
+INSERT INTO `department` VALUES ('1', '市场部', '0', '0/1', '市场部');
+INSERT INTO `department` VALUES ('2', '研发部', '1', '0', '市场部/研发部');
 
 -- ----------------------------
 -- Table structure for `employee`
@@ -66,15 +67,17 @@ CREATE TABLE `employee` (
   `sex` enum('1','0') NOT NULL DEFAULT '1' COMMENT '性别：1男，0女',
   `phone` bigint(20) DEFAULT NULL COMMENT '手机',
   `birthday` int(11) DEFAULT NULL COMMENT '生日',
-  `create_time` int(11) DEFAULT NULL COMMENT '入职时间',
+  `description` varchar(255) DEFAULT NULL COMMENT '入职时间',
   `status` enum('1','2') NOT NULL DEFAULT '1' COMMENT '状态：1.在职，2.离职',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of employee
 -- ----------------------------
 INSERT INTO `employee` VALUES ('1', 'cloud', '1', '1', '13564003116', '0', '1463171549', '1');
+INSERT INTO `employee` VALUES ('2', 'Airc', '1', '1', '18862190276', '0', '1463497471', '1');
+INSERT INTO `employee` VALUES ('3', '是哒', '1', '1', '13564211234', '0', '1463499378', '1');
 
 -- ----------------------------
 -- Table structure for `manager`
@@ -115,7 +118,7 @@ CREATE TABLE `recruit` (
 -- ----------------------------
 -- Records of recruit
 -- ----------------------------
-INSERT INTO `recruit` VALUES ('1', '程序员', 'php相关', '1', '1', '20', '20', '5000', '3', '0', '啥都快乐哈可怜回到家看哈看机会的尽快哈家客户的即可很快拉黑的快乐哈卡洛斯的很快会尽快刘德华');
+INSERT INTO `recruit` VALUES ('1', '程序员', 'php相关', '1', '2', '20', '20', '5000', '3', '1', '啥都快乐哈可怜回到家看哈看机会的尽快哈家客户的即可很快拉黑的快乐哈卡洛斯的很快会尽快刘德华');
 INSERT INTO `recruit` VALUES ('2', '程序员', 'php相关', '1', '0', '20', '20', '5000', '3', '0', '啥都快乐哈可怜回到家看哈看机会的尽快哈家客户的即可很快拉黑的快乐哈卡洛斯的很快会尽快刘德华');
 
 -- ----------------------------

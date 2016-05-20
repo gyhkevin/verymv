@@ -22,7 +22,7 @@
 	<div class="admin-content">
 
 	<div class="am-cf am-padding">
-		<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">员工信息</strong></div>
+		<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">培训信息</strong></div>
 	</div>
 
 	<div class="am-g">
@@ -43,12 +43,20 @@
 		<table class="am-table am-table-bd am-table-striped admin-content-table">
 			<thead>
 			<tr>
-			<th>ID</th><th>用户名</th><th>最后成交任务</th><th>成交订单</th><th>管理</th>
+					<th>ID</th>
+					<th>培训名称</th>
+					<th>讲师</th>
+					<th>培训地点</th>
+					<th>管理</th>
 			</tr>
 			</thead>
 			<tbody>
 			<?php foreach ($gotdata as $key => $val): ?>
-				<tr><td><?=$val->id; ?></td><td><?=$val->name; ?></td><td><a href="#">Business management</a></td> <td><span class="am-badge am-badge-success">+20</span></td>
+					<tr>
+						<td><?=$val->id; ?></td>
+						<td><?=$val->name; ?></td>
+						<td><a href="#"><?=$val->lecturer; ?></a></td>
+						<td><span><?=$val->attend_address; ?></span></td>
 				<td>
 					<div class="am-dropdown" data-am-dropdown>
 					<button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
@@ -62,6 +70,20 @@
 			<?php endforeach; ?>
 			</tbody>
 		</table>
+			<div class="am-cf">共 <?=$total; ?> 条记录
+				<div class="am-fr">
+					<ul class="am-pagination">
+						<?=$this->pagination->create_links(); ?>
+						<!-- <li class="am-disabled"><a href="#">«</a></li>
+						<li class="am-active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">»</a></li> -->
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 

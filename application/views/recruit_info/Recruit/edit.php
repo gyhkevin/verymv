@@ -92,7 +92,9 @@
 				<label for="user-email" class="am-u-sm-3 am-form-label">部门 / Department</label>
 				<div class="am-u-sm-9">
 					<select name="department_id" id="">
-						<option value="1">市场部</option>
+						<?php  foreach ($options as $row) { ?>
+							<option value="<?php echo $row['id'] ?>" <?php if($row['id'] == $info->department_id) echo 'selected'; ?> ><?php echo str_pad("",$row['deep']*3, "-",STR_PAD_RIGHT); ?><?php echo $row['name']; ?></option>
+						<?php } ?>
 					</select>
 					<small>部门你懂得...</small>
 				</div>
@@ -102,9 +104,9 @@
 				<label for="user-QQ" class="am-u-sm-3 am-form-label">性别 / Sex</label>
 				<div class="am-u-sm-9">
 					<select name="sex" id="">
-						<option value="0">不限</option>
-						<option value="1">限招男</option>
-						<option value="2">限招女</option>
+						<option value="0" <?php if($info->sex == 0) echo 'selected'; ?>>不限</option>
+						<option value="1" <?php if($info->sex == 1) echo 'selected'; ?>>限招男</option>
+						<option value="2" <?php if($info->sex == 2) echo 'selected'; ?>>限招女</option>
 					</select>
 				</div>
 			</div>
@@ -141,9 +143,9 @@
 				<label for="user-weibo" class="am-u-sm-3 am-form-label">职位类型 / Type</label>
 				<div class="am-u-sm-9">
 					<select name="type" id="">
-						<option value="0">全职兼职皆可</option>
-						<option value="1">全职</option>
-						<option value="2">兼职</option>
+						<option value="0" <?php if($info->type == 0) echo 'selected'; ?>>全职兼职皆可</option>
+						<option value="1" <?php if($info->type == 1) echo 'selected'; ?>>全职</option>
+						<option value="2" <?php if($info->type == 2) echo 'selected'; ?>>兼职</option>
 					</select>
 				</div>
 			</div>

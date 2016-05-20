@@ -19,26 +19,30 @@ class Employee extends CI_Controller
 		parent::__construct ();
 	}
 
-	public function index($page = 0)
+	public function index($per_page = '')
 	{
 		$this->load->model($this->model_path);
 		$this->load->library('pagination');
 		$this->load->helper('url');
 
-		// $page_url = sprintf(
-  //           '%s/index/%s/%s/%s/{$per_page}/%s/%s/%s',
-  //           $this->page_path, $status, $sort_filed, $sort_mode, $from_date, $end_date, $keyword
-  //       );
+		$total = $this->employee_model->total();
 
-		// $config['base_url'] = site_url("{$page_path}/index");
-		// $config['total_rows'] = $this->employee_model->total();
-		// $config['per_page'] = 20;
-		// $this->pagination->initialize($config);
+		$config['base_url'] = site_url("users/employee/index");
+		$config['total_rows'] = $total;
+		$config['per_page'] = 10;
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="am-active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['next_link'] = FALSE;
+		$config['uri_segment'] = 4;
+		$config['prev_link'] = FALSE;
 
-		$data['gotdata'] = $this->employee_model->get()->result();
+		$this->pagination->initialize($config);
+
+		$data['total'] = $total;
+		$data['gotdata'] = $this->employee_model->get_with_dept(10, $per_page)->result();
 		$data['page_path'] = $this->page_path;
-
-		// 把菜单中的值存放到session，以便直接拿数据，无需重复定义。
 
 		$this->load->view("{$this->view_path}/list", $data);
 	}
@@ -54,9 +58,10 @@ class Employee extends CI_Controller
 		{
 			$gotdata[$value->id] = array('id' => $value->id, 'pid' => $value->pid, 'name' => $value->name);
 		}
+		$options = $this->getChildren($this->_tree($gotdata));
 
 		$data['page_path'] = $this->page_path;
-		$data['gotdata'] = $this->_tree($gotdata);
+		$data['options'] = $options;
 
 		$this->load->view("{$this->view_path}/add", $data);
 	}
@@ -72,9 +77,10 @@ class Employee extends CI_Controller
 		{
 			$gotdata[$value->id] = array('id' => $value->id, 'pid' => $value->pid, 'name' => $value->name);
 		}
+		$options = $this->getChildren($this->_tree($gotdata));
 
 		$data['page_path'] = $this->page_path;
-		$data['gotdata'] = $this->_tree($gotdata);
+		$data['options'] = $options;
 		$data['info'] = $this->employee_model->get($id)->row();
 
 		$this->load->view("{$this->view_path}/edit", $data);
@@ -91,9 +97,9 @@ class Employee extends CI_Controller
 		$pge_sex = $this->input->post('user_sex');
 		$pge_phone = $this->input->post('user_phone');
 		$pge_status = $this->input->post('user_status');
-		$pge_birthday = $this->input->post('user_birthday');
+		$pge_desc = $this->input->post('user_desc');
 
-		$data = array('name' => $pge_name, 'department_id' => $pge_department, 'sex' => $pge_sex, 'phone' => $pge_phone, 'birthday' => $pge_birthday, 'create_time' => time(), 'status' => $pge_status);
+		$data = array('name' => $pge_name, 'department_id' => $pge_department, 'sex' => $pge_sex, 'phone' => $pge_phone, 'description' => $pge_desc, 'create_time' => time(), 'status' => $pge_status);
 		$insert_id = $this->employee_model->add($data);
 
 		if ($insert_id > 0)
@@ -111,9 +117,9 @@ class Employee extends CI_Controller
 		$pge_sex = $this->input->post('user_sex');
 		$pge_phone = $this->input->post('user_phone');
 		$pge_status = $this->input->post('user_status');
-		$pge_birthday = $this->input->post('user_birthday');
+		$pge_desc = $this->input->post('user_desc');
 
-		$data = array('name' => $pge_name, 'department_id' => $pge_department, 'sex' => $pge_sex, 'phone' => $pge_phone, 'birthday' => $pge_birthday, 'create_time' => time(), 'status' => $pge_status);
+		$data = array('name' => $pge_name, 'department_id' => $pge_department, 'sex' => $pge_sex, 'phone' => $pge_phone, 'description' => $pge_desc, 'create_time' => time(), 'status' => $pge_status);
 		$update_id = $this->employee_model->update($id, $data);
 
 		if ($update_id > 0)
@@ -148,5 +154,17 @@ class Employee extends CI_Controller
 			}
 		}
 		return $tree;
+	}
+
+	private function getChildren($option, $deep = 0)
+	{
+		$data = array();
+		foreach($option as $row) {
+	        $data[] = array("id"=>$row['id'], "name"=>$row['name'],"pid"=>$row['pid'],'deep'=>$deep);
+	        if (isset($row['son'])) {
+	            $data = array_merge($data, $this->getChildren($row['son'], $deep+1));
+	        }
+	    }
+	    return $data;
 	}
 }

@@ -85,6 +85,9 @@
 					<div class="am-u-sm-9">
 						<select name="department_path" id="department_path">
 							<option value="0">顶级目录</option>
+							<?php  foreach ($options as $row) { ?>
+    							<option value="<?php echo $row['id'] ?>"><?php echo str_pad("",$row['deep']*3, "-",STR_PAD_RIGHT); ?><?php echo $row['name']; ?></option>
+							<?php } ?>
 						</select>
 						<!-- <input type="email" id="user-email" placeholder="输入你的电子邮件 / Email"> -->
 						<small>选择你要添加部门的层级...</small>
@@ -115,6 +118,18 @@
 <script src="<?=$theme_path;?>assets/js/app.js"></script>
 </body>
 <script type="text/javascript">
-	
+	// jQuery(window).ready(function () {
+	// 	console.log(1111);
+	// 	generateTree('<?=$gotdata; ?>');
+	// 	console.log(2222);
+	// 	function getTreeData(tree) {
+	// 		foreach(tree as t) {
+	// 			$('#department_path').append("<option value=" + t['id'] + ">" + t['name'] + '</option>');
+	// 			if(isset(t['son'])){
+	// 				getTreeData(t['son']);
+	// 			}
+	// 		}
+	// 	}
+	// });
 </script>
 </html>

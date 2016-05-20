@@ -16,13 +16,30 @@ class Training extends CI_Controller
 		parent::__construct();
 	}
 
-	public function index()
+	public function index($per_page = '')
 	{
 		$this->load->model($this->model_path);
+		$this->load->library('pagination');
 		$this->load->helper('url');
 
+		$total = $this->training_model->total();
+
+		$config['base_url'] = site_url("recruit_info/training/index");
+		$config['total_rows'] = $total;
+		$config['per_page'] = 10;
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="am-active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['next_link'] = FALSE;
+		$config['uri_segment'] = 4;
+		$config['prev_link'] = FALSE;
+
+		$this->pagination->initialize($config);
+
 		$data['page_path'] = $this->page_path;
-		$data['gotdata'] = $this->training_model->get()->result();
+		$data['total'] = $total;
+		$data['gotdata'] = $this->training_model->get(0, 10, $per_page)->result();
 
 		$this->load->view("{$this->view_path}/list", $data);
 	}

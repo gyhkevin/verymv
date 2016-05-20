@@ -43,12 +43,22 @@
 		<table class="am-table am-table-bd am-table-striped admin-content-table">
 			<thead>
 			<tr>
-			<th>ID</th><th>用户名</th><th>最后成交任务</th><th>成交订单</th><th>管理</th>
+					<th>ID</th>
+					<th>用户名</th>
+					<th>性别</th>
+					<th>部门</th>
+					<th>手机号码</th>
+					<th>管理</th>
 			</tr>
 			</thead>
 			<tbody>
 			<?php foreach ($gotdata as $key => $val): ?>
-				<tr><td><?=$val->id; ?></td><td><?=$val->name; ?></td><td><a href="#">Business management</a></td> <td><span class="am-badge am-badge-success">+20</span></td>
+					<tr>
+						<td><?=$val->id; ?></td>
+						<td><?=$val->name; ?></td>
+						<td><?=($val->sex == 1 ? '男' : '女'); ?></td>
+						<td><a href="#"><?=$val->string; ?></a></td>
+						<td><span><?=$val->phone; ?></span></td>
 				<td>
 					<div class="am-dropdown" data-am-dropdown>
 					<button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
@@ -62,6 +72,20 @@
 			<?php endforeach; ?>
 			</tbody>
 		</table>
+			<div class="am-cf">共 <?=$total; ?> 条记录
+				<div class="am-fr">
+					<ul class="am-pagination">
+						<?=$this->pagination->create_links(); ?>
+						<!-- <li class="am-disabled"><a href="#">«</a></li>
+						<li class="am-active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">»</a></li> -->
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 

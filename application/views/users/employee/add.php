@@ -83,9 +83,9 @@
 			<div class="am-form-group">
 				<label for="user-email" class="am-u-sm-3 am-form-label">部门 / Department</label>
 				<div class="am-u-sm-9">
-					<select name="department_id" id="">
-						<option value="1">市场部</option>
-					</select>
+					<?php  foreach ($options as $row) { ?>
+						<option value="<?php echo $row['id'] ?>" <?php if($row['id'] == $info->department_id) echo 'selected'; ?> ><?php echo str_pad("",$row['deep']*3, "-",STR_PAD_RIGHT); ?><?php echo $row['name']; ?></option>
+					<?php } ?>
 					<small>部门你懂得...</small>
 				</div>
 			</div>
@@ -118,9 +118,9 @@
 			</div>
 
 			<div class="am-form-group">
-				<label for="user-intro" class="am-u-sm-3 am-form-label">出生日期 / Birthday</label>
+				<label for="user-intro" class="am-u-sm-3 am-form-label">个人简介 / Description</label>
 				<div class="am-u-sm-9">
-					<textarea class="" rows="5" id="user-intro" name='user_birthday' placeholder="输入个人简介"></textarea>
+					<textarea class="" rows="5" id="user-intro" name='user_desc' placeholder="输入个人简介"></textarea>
 					<small>250字以内写出你的一生...</small>
 				</div>
 			</div>

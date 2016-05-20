@@ -119,8 +119,8 @@
 				<label for="user-weibo" class="am-u-sm-3 am-form-label">状态 / Status</label>
 				<div class="am-u-sm-9">
 					<select name="type" id="">
-						<option value="1">新员工培训</option>
-						<option value="2">离职</option>
+						<option value="1" <?php if($info->type == 1) echo 'selected'; ?>>新员工培训</option>
+						<option value="2" <?php if($info->type == 2) echo 'selected'; ?>>离职</option>
 					</select>
 				</div>
 			</div>
