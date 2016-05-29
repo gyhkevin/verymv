@@ -1,13 +1,11 @@
 <?php
-$filename = 'data.json';
-// 读去文件全部内容
-$file_hwnd = fopen ( $filename, "r" );
-$content = fread ( $file_hwnd, filesize ( $filename ) ); 
-fclose ( $file_hwnd );
-// 将文本数据转换回数组
-$data = json_decode ( $content, true ); 
-
+include_once('class/Verymv.php');
 require_once('pages/header.php');
-?>
 
-<?php require_once('pages/footer.php');?>
+$json = 'static/json/data.json';
+$verymv = new verymv();
+$data = $verymv::getJsonData($json);
+
+require_once('pages/content.php');
+require_once('pages/footer.php');
+?>
